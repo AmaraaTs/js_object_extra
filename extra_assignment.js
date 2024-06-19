@@ -39,36 +39,35 @@ let avgg = avg(b1array);
 console.log("min: ", minn, "max: ", maxx, "avg: ", avgg / b1array.length);
 
 // bodlogo2. Ugugdsun zahialguudiin niit borluulaltiin dun oldog function bichih.
-// const orders = [
-//   {
-//     orderId: 1,
-//     items: [
-//       { itemName: "Apple", price: 1 },
-//       { itemName: "Banana", price: 2 },
-//     ],
-//   },
-//   {
-//     orderId: 2,
-//     items: [
-//       { itemName: "Orange", price: 1.5 },
-//       { itemName: "Grapes", price: 3 },
-//     ],
-//   },
-// ];
+const orders = [
+  {
+    orderId: 1,
+    items: [
+      { itemName: "Apple", price: 1 },
+      { itemName: "Banana", price: 2 },
+    ],
+  },
+  {
+    orderId: 2,
+    items: [
+      { itemName: "Orange", price: 1.5 },
+      { itemName: "Grapes", price: 3 },
+    ],
+  },
+];
 
-// function sales(x, y) {
-//   for (i = 0; i < x.length; i++) {
-//     let zero = 0;
-//     zero = zero + x[i].items;
-//     for (i = 0; i < y.length; i++) {
-//       let hero = 0;
-//       hero = hero + y[i].price;
-//     }
-//   }
-//   return zero;
-// }
-// let saless = sales(orders, items);
-// console.log("1: ", saless);
+function sales(x) {
+  let sum = 0;
+  for (i = 0; i < x.length; i++) {
+    // console.log(x[i].items);
+    for (j = 0; j < x[i].items.length; j++) {
+      sum += x[i].items[j].price;
+    }
+  }
+  return sum;
+}
+let saless = sales(orders);
+console.log("Total sales: ", saless);
 
 // bodlogo3. Ugugdsun array iin anhnii utagtai bolon квадрат, куб iin oldog function bichih. jishee ni: input [1, 2, 3, 4, 5]
 // output [ { original: 1, square: 1, cube: 1 }, { original: 2, square: 4, cube: 8 }, { original: 3, square: 9, cube: 27 },  { original: 4, square: 16, cube: 64 }, { original: 5, square: 25, cube: 125 } ]
@@ -95,6 +94,7 @@ for (i = 0; i < b3array.length; i++) {
 }
 
 // bodlogo4. Ugugdsun company iin data aas hamgiin ih tsalintai ajiltang oldog function bichih.
+
 const company = {
   name: "TechCorp",
   address: "123 Silicon Valley",
@@ -105,16 +105,42 @@ const company = {
   ],
 };
 
-let employeename;
 function maxsalary(x) {
-  zero = 0;
+  let zero = 0;
+  let employeename = "";
   for (i = 0; i < x.employees.length; i++) {
-    if (zero < x.employees.salary[i]) {
-      zero = x.employees.salary[i];
-      employeename = x.employees.name[i];
+    if (zero < x.employees[i].salary) {
+      zero = x.employees[i].salary;
+      employeename = x.employees[i].name;
     }
   }
   return employeename;
 }
 let maxsalaryname = maxsalary(company);
 console.log("employee - max salary: ", maxsalaryname);
+
+// bodlogo1. bagshaas.
+
+function findAvgMinMax(arr) {
+  let min = arr[0];
+  let max = arr[0];
+  let avg = 0;
+  let sum = 0;
+  for (let i = 0; i < arr.length; i++) {
+    if (min > arr[i]) {
+      min = arr[i];
+    }
+    if (max < arr[i]) {
+      max = arr[i];
+    }
+    sum += arr[i];
+  }
+  avg = sum / arr.length;
+  return {
+    baga: min,
+    ih: max,
+    dundaj: avg,
+  };
+}
+let result = findAvgMinMax(b1array);
+console.log("bodlogo1 bagshaas: ", result);
